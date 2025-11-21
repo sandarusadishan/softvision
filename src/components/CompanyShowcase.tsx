@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import backgroundVideo from '/src/accets/video.mp4';
 
 interface Company {
   name: string;
@@ -90,7 +91,7 @@ const CompanyShowcase = () => {
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover object-center"
-        src="/src/accets/video.mp4"
+        src={backgroundVideo}
         autoPlay
         loop
         muted

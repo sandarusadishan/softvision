@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import SectionDivider from "./SectionDivider";
 import { Starfield } from "./Starfield";
+import backgroundImage from '/src/accets/background1.jpg';
+import logoImage from '/src/accets/re logo.png';
 
 const HeroSection = () => {
   // Split the title into characters for staggered animation
@@ -74,7 +76,7 @@ const HeroSection = () => {
       <div
         className="absolute inset-0 bg-cover"
         style={{
-          backgroundImage: "url('/src/accets/background1.jpg')",
+          backgroundImage: `url(${backgroundImage})`,
           backgroundAttachment: 'fixed',
           backgroundPosition: 'center',
         }}
@@ -146,7 +148,7 @@ const HeroSection = () => {
           >
             <div className="relative">
               <motion.img
-                src="/src/accets/re logo.png"
+                src={logoImage}
                 alt="SoftVision Group"
                 className="h-28 md:h-36 lg:h-44 object-contain drop-shadow-2xl"
               />

@@ -90,7 +90,7 @@ const CompanyShowcase = () => {
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover object-center"
-        src="/public/video.mp4"
+        src="/src/accets/video.mp4"
         autoPlay
         loop
         muted

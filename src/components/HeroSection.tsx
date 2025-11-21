@@ -74,7 +74,7 @@ const HeroSection = () => {
       <div
         className="absolute inset-0 bg-cover"
         style={{
-          backgroundImage: "url('/public/background1.jpg')",
+          backgroundImage: "url('/src/accets/background1.jpg')",
           backgroundAttachment: 'fixed',
           backgroundPosition: 'center',
         }}
@@ -146,7 +146,7 @@ const HeroSection = () => {
           >
             <div className="relative">
               <motion.img
-                src="/public/re logo.png"
+                src="/src/accets/re logo.png"
                 alt="SoftVision Group"
                 className="h-28 md:h-36 lg:h-44 object-contain drop-shadow-2xl"
               />

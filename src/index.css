@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* SoftVision Group Design System - Corporate Modern */
+    --background: 0 0% 100%; /* Pure White */
+    --foreground: 220 40% 15%; /* Dark Navy Blue */
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 15%;
+
+    /* Primary: Dark Navy Blue */
+    --primary: 220 45% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Lighter Blue for subtle backgrounds */
+    --secondary: 220 20% 95%;
+    --secondary-foreground: 220 40% 15%;
+
+    /* Muted surfaces */
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 20% 50%;
+
+    /* Accent: Electric Blue */
+    --accent: 200 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Electric Blue variants for effects */
+    --electric-blue: 195 100% 50%;
+    --electric-blue-glow: 195 100% 60%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 200 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Shadows for depth */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-electric: 0 0 40px rgba(0, 188, 255, 0.3);
+
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 40% 15%;
+    --sidebar-primary: 220 45% 18%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 96%;
+    --sidebar-accent-foreground: 220 40% 15%;
+    --sidebar-border: 220 20% 88%;
+    --sidebar-ring: 200 100% 50%;
+  }
+
+  .dark {
+    --background: 220 45% 10%;
+    --foreground: 0 0% 100%;
+
+    --card: 220 40% 12%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 220 40% 12%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 200 100% 50%;
+    --primary-foreground: 220 45% 10%;
+
+    --secondary: 220 35% 18%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 35% 18%;
+    --muted-foreground: 220 15% 70%;
+
+    --accent: 200 100% 50%;
+    --accent-foreground: 220 45% 10%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 30% 25%;
+    --input: 220 30% 25%;
+    --ring: 200 100% 50%;
+    
+    --sidebar-background: 220 45% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 200 100% 50%;
+    --sidebar-primary-foreground: 220 45% 10%;
+    --sidebar-accent: 220 35% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 30% 25%;
+    --sidebar-ring: 200 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .aurora-background {
+    animation: aurora 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes aurora {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+}

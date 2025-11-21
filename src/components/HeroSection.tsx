@@ -6,23 +6,20 @@ import backgroundImage from '/src/accets/background1.jpg';
 import logoImage from '/src/accets/re logo.png';
 
 const HeroSection = () => {
-  // Split the title into characters for staggered animation
   const titleText = "SoftVision Group";
   const subtitleText = "Pioneering Digital Innovation";
 
-  // Container variants for the Title Text Wave
   const titleContainer = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.03, // Faster stagger
-        delayChildren: 0.8,    // Starts after logo finishes
+        staggerChildren: 0.03,
+        delayChildren: 0.8,
       },
     },
   };
 
-  // Variants for each character (letter) in the Title Wave
   const titleChild = {
     hidden: {
       opacity: 0,
@@ -43,15 +40,14 @@ const HeroSection = () => {
     },
   };
 
-  // ADVANCED: Holographic Logo Entrance Variants
   const logoVariants = {
     initial: {
       scale: 0.3,
       opacity: 0,
       y: -100,
-      rotateX: 90,    // Initial 3D tilt
-      rotateY: -45,   // Initial 3D twist
-      scaleZ: 0.1,    // Simulating flat initial projection
+      rotateX: 90,
+      rotateY: -45,
+      scaleZ: 0.1,
     },
     animate: {
       scale: 1,
@@ -61,30 +57,32 @@ const HeroSection = () => {
       rotateY: 0,
       scaleZ: 1,
       transition: {
-        duration: 2.0, // Long duration for dramatic effect
+        duration: 2.0,
         delay: 0.2,
         type: "spring",
-        stiffness: 120, // High stiffness for sharp stop
-        damping: 18,    // Controlled bounce
+        stiffness: 120,
+        damping: 18,
       },
     },
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* Background Image and Overlay */}
+    <section 
+      className="relative flex items-center justify-center overflow-hidden bg-background"
+      style={{ minHeight: "100svh" }}  // mobile height fix
+    >
+      {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${backgroundImage})`,
-          backgroundAttachment: 'fixed',
-          backgroundPosition: 'center',
+          backgroundAttachment: window.innerWidth > 768 ? "fixed" : "scroll",
         }}
       />
       <div className="absolute inset-0 bg-black/70" />
 
-      {/* Enhanced Starfield Canvas */}
-      <div className="absolute inset-0">
+      {/* Starfield (Hidden on mobile for performance) */}
+      <div className="absolute inset-0 hidden sm:block">
         <Canvas camera={{ position: [0, 0, 5] }}>
           <ambientLight intensity={1.2} />
           <pointLight intensity={2} position={[0, 0, -10]} color="#00aaff" />
@@ -129,20 +127,20 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0, type: "spring" }} 
-          className="space-y-8"
+          transition={{ duration: 0.5, type: "spring" }}
+          className="space-y-6 md:space-y-8"
         >
-          {/* Logo with ⚡ ADVANCED HOLOGRAPHIC ANIMATION ⚡ */}
+
+          {/* Logo */}
           <motion.div
             variants={logoVariants}
             initial="initial"
             animate="animate"
-            className="flex justify-center mb-8"
-            // Apply 3D perspective to the parent container
-            style={{ perspective: 1500, transformStyle: 'preserve-3d' }} 
+            className="flex justify-center mb-4 md:mb-8"
+            style={{ perspective: 1500, transformStyle: 'preserve-3d' }}
             whileHover={{
               scale: 1.1,
-              rotate: [0, 5, -5, 0], 
+              rotate: [0, 5, -5, 0],
               transition: { duration: 0.5 }
             }}
           >
@@ -150,43 +148,36 @@ const HeroSection = () => {
               <motion.img
                 src={logoImage}
                 alt="SoftVision Group"
-                className="h-28 md:h-36 lg:h-44 object-contain drop-shadow-2xl"
+                className="h-20 sm:h-28 md:h-36 lg:h-44 object-contain drop-shadow-2xl"
               />
-              {/* Logo Glow Effect - Pulsing */}
               <motion.div
                 className="absolute inset-0 bg-cyan-400/50 blur-3xl rounded-full -z-10"
                 initial={{ opacity: 0 }}
                 animate={{
-                  opacity: [0, 0.6, 0.1, 0.4], 
+                  opacity: [0, 0.6, 0.1, 0.4],
                   scale: [0.8, 1.2, 1],
                 }}
-                transition={{
-                  duration: 2.0,
-                  repeat: Infinity,
-                  delay: 0.5, 
-                }}
+                transition={{ duration: 2, repeat: Infinity }}
               />
             </div>
           </motion.div>
 
-          {/* Title with Electric Wave Reveal */}
-          <motion.h1
-            className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter leading-none"
-          >
+          {/* Title */}
+          <motion.h1 className="
+            text-4xl sm:text-5xl md:text-7xl lg:text-9xl 
+            font-black text-white tracking-tight leading-none
+          ">
             <motion.span
               variants={titleContainer}
               initial="hidden"
               animate="visible"
-              className="text-slate-400 text-8xl font-black drop-shadow-2xl inline-block px-2 py-1 rounded-md"
-              style={{
-                backgroundSize: "200% 100%",
-              }}
+              className="text-slate-400 inline-block px-2 py-1 rounded-md"
             >
               {Array.from(titleText).map((word, index) => (
                 <motion.span 
-                  key={index} 
+                  key={index}
                   variants={titleChild}
-                  className="inline-block" // Must be inline-block to accept 3D transforms
+                  className="inline-block"
                 >
                   {word === " " ? "\u00A0" : word}
                 </motion.span>
@@ -194,28 +185,19 @@ const HeroSection = () => {
             </motion.span>
           </motion.h1>
 
-          {/* Group Badge (empty) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
-            className="inline-block"
-          >
-            
-          </motion.div>
-
-          {/* Subtitle with Split Wipe Effect */}
+          {/* Subtitle */}
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 1.2, ease: [0.22, 1, 0.36, 1] }} 
+            transition={{ duration: 0.8, delay: 1.2 }}
             className="overflow-hidden"
           >
             <motion.p
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 1.5 }}
-              className="text-2xl md:text-3xl lg:text-4xl font-light text-white/90 tracking-wide mx-auto whitespace-nowrap font-mono"
+              className="text-lg sm:text-xl md:text-3xl lg:text-4xl 
+                font-light text-white/90 tracking-wide mx-auto font-mono"
             >
               {subtitleText}
             </motion.p>
@@ -226,18 +208,18 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.8 }}
-            className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light"
+            className="text-sm sm:text-base md:text-lg text-white/80 max-w-3xl mx-auto leading-relaxed font-light"
           >
             Transforming businesses through cutting-edge software solutions, 
             cloud infrastructure, and visionary technology partnerships.
           </motion.p>
 
-          {/* Enhanced Accent Line (Slightly longer delay to follow description) */}
+          {/* Accent Line */}
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1.5, delay: 2.3, type: "spring" }}
-            className="relative h-1 mx-auto max-w-2xl"
+            className="relative h-1 mx-auto max-w-xl md:max-w-2xl"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-400 to-transparent" />
             <motion.div
@@ -247,62 +229,37 @@ const HeroSection = () => {
             />
           </motion.div>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 2.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
-          >
-          
-            
-            
-          </motion.div>
         </motion.div>
       </div>
 
-      {/* Enhanced Scroll Down Indicator (Delayed to appear last) */}
+      {/* Scroll Down */}
       <a
         href="#company-showcase"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 group"
-        aria-label="Scroll down"
+        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-10 group"
       >
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 3.0 }}
-          className="flex flex-col items-center space-y-4"
+          transition={{ duration: 1, delay: 3 }}
+          className="flex flex-col items-center space-y-3"
         >
           <motion.span
-            className="text-white/60 text-sm font-light tracking-widest uppercase"
+            className="text-white/60 text-xs sm:text-sm font-light tracking-widest uppercase"
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             Scroll to Explore
           </motion.span>
-          
+
           <motion.div
-            className="w-6 h-10 rounded-full border-2 border-cyan-400/50 flex justify-center items-start p-1 group-hover:border-cyan-400 transition-colors duration-300"
-            animate={{ 
-              y: [0, 10, 0],
-            }}
-            transition={{ 
-              duration: 2, 
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+            className="w-5 h-8 sm:w-6 sm:h-10 rounded-full border-2 border-cyan-400/50 flex justify-center items-start p-1"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
           >
             <motion.div
-              className="w-1 h-3 bg-cyan-400 rounded-full"
-              animate={{ 
-                y: [0, 16, 0],
-                opacity: [1, 0, 1]
-              }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
+              className="w-1 h-2 sm:h-3 bg-cyan-400 rounded-full"
+              animate={{ y: [0, 16, 0], opacity: [1, 0, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
             />
           </motion.div>
         </motion.div>

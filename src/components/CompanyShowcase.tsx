@@ -22,7 +22,7 @@ const companies: Company[] = [
   {
     name: "Soft Vision Technologies (Pvt) Ltd",
     url: "https://busy.lk/",
-    logo: "https://busy.lk/images/soft-vision-logo.png",
+    logo: "https://busy.lk/images/icon.png",
     description: "Business Management Solutions",
     accentColor: "#10B981"
   },

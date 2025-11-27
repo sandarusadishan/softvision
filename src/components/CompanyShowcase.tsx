@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import backgroundVideo from '/src/accets/video.mp4';
+import backgroundVideo from '@/accets/video.mp4';
+import videoPoster from '@/accets/background1.jpg'; // Add a poster image
 
 interface Company {
   name: string;
@@ -87,11 +88,17 @@ const CompanyShowcase = () => {
   };
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
+    <motion.section 
+      className="relative py-20 md:py-28 overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.0 }}
+    >
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover object-center"
         src={backgroundVideo}
+        poster={videoPoster} // Use a poster image for faster initial paint
         autoPlay
         loop
         muted
@@ -362,7 +369,7 @@ const CompanyShowcase = () => {
           </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

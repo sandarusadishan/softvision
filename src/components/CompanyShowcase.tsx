@@ -17,7 +17,7 @@ const companies: Company[] = [
     name: "SoftVision IT Group (Pvt) Ltd",
     url: "https://svg.lk",
     logo: "https://svg.lk/assets/logo-CetAuJiQ.png",
-    description: "Cutting-edge software solutions",
+    description: "software Development and IT services",
     accentColor: "#3B82F6"
   },
   {

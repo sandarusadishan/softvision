@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SoftVision Group - Pioneering Innovation in Software Solutions</title>
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="icon" type="image/png" href="/favicon.ico.png" />
     <meta name="description" content="SoftVision Group: Leading provider of cutting-edge software solutions, business management systems, and cloud technology across Sri Lanka and beyond." />
     <meta name="author" content="SoftVision Group" />
     <meta name="keywords" content="software solutions, ERP systems, business management, cloud infrastructure, Sri Lanka" />
@@ -20,44 +20,6 @@
   </head>
   
   <body>
-    <!-- Pre-React loader to prevent white screen flash -->
-    <div id="loader">
-        <style>
-            body {
-                background-color: #020617; /* Dark Navy Blue */
-                margin: 0;
-                padding: 0;
-            }
-            #loader {
-                position: fixed;
-                inset: 0;
-                z-index: 9999;
-                background-color: #020617; /* Same as body */
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transition: opacity 0.5s ease-out; /* Fade-out transition */
-            }
-            #loader.fade-out {
-                opacity: 0;
-            }
-            .spinner {
-                width: 50px;
-                height: 50px;
-                border: 4px solid rgba(0, 255, 255, 0.2); /* Faded Cyan */
-                border-top-color: #00FFFF; /* Electric Cyan */
-                border-radius: 50%;
-                animation: spin 1s linear infinite;
-            }
-            @keyframes spin {
-                to {
-                    transform: rotate(360deg);
-                }
-            }
-        </style>
-        <div class="spinner"></div>
-    </div>
-
     <!-- React app root -->
     <div id="root"></div>
 

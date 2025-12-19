@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import SectionDivider from "./SectionDivider";
 import { Starfield } from "./Starfield";
 import backgroundImage from '/src/accets/background1.jpg';
-import logoImage from '/src/accets/re logo.png';
+import logoImage from '/src/accets/favicon.ico.png';
 
 const HeroSection = () => {
   const titleText = "SoftVision Group";
